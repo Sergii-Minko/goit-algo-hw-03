@@ -61,7 +61,7 @@ def check_format(string):
 
 
 # Prompt the user to input the range and quantity of numbers for the lottery ticket
-string = input("Введіть діапазон чисел min, max, quantity: ")
+string = input("Введіть Ваш діапазон чисел min, max, quantity: ")
 
 # Loop until the input format is correct
 while not check_format(string):
