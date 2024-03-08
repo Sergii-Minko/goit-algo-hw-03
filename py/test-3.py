@@ -38,6 +38,7 @@ def normalize_phone(phone_number):
 
 
 # Iterate over the raw numbers and normalize them
+print("Нормалізовані номери телефонів для SMS-розсилки:")
 for number in raw_numbers:
     if len(number) >= 9:  # Check if the string is long enough to be a phone number
         print(normalize_phone(number))  # Print the normalized phone number
