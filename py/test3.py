@@ -12,6 +12,7 @@ raw_numbers = [
     "38050 111 22 11   ",
     "501112211",
 ]
+sanitized_numbers = []
 
 
 # Function to normalize phone numbers to a standardized UA phone format
@@ -38,11 +39,16 @@ def normalize_phone(phone_number):
 
 
 # Iterate over the raw numbers and normalize them
-print("Нормалізовані номери телефонів для SMS-розсилки:")
+
 for number in raw_numbers:
     if len(number) >= 9:  # Check if the string is long enough to be a phone number
+        sanitized_numbers.append(normalize_phone(number))
+
         print(normalize_phone(number))  # Print the normalized phone number
     else:
         print(
             f"Неправильний формат номер телефона {number}"
         )  # If not long enough, print an error message
+
+
+print("Нормалізовані номери телефонів для SMS-розсилки: ", sanitized_numbers)
