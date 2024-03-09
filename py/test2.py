@@ -40,16 +40,24 @@ def check_format(string):
             "Неправильний формат даних"
         )  # Print an error message if input format is incorrect
         return False
+    if (min_value < 1) or max_value > 1000:
+        print(
+            "Неправильний формат даних min має бути більшим за 0, max має бути меншим за 1000"
+        )
+        return False
 
     # Ensure the minimum value is less than or equal to the maximum value
     if min_value > max_value:
-        min_value, max_value = max_value, min_value
+        # min_value, max_value = max_value, min_value
+        print("Неправильний формат даних min має бути меншим за max")
+        return False
 
     # If the range is smaller than the requested quantity of numbers, adjust the quantity
     if max_value - min_value + 1 < quantity:
-        print("Неправильний формат даних quantity має бути меншим за max - min")
-        quantity = (max_value - min_value) // 2
-        print("Нова кількість чисел: ", quantity)
+        print("Неправильний формат даних quantity має бути меншим за (max - min) + 1")
+        # quantity = (max_value - min_value) // 2
+        # print("Нова кількість чисел: ", quantity)
+        return False
 
     # Print the obtained data for the lottery ticket
     print("Отримані данні для лотерейнього білету:")
@@ -65,7 +73,11 @@ string = input("Введіть Ваш діапазон чисел min, max, quan
 
 # Loop until the input format is correct
 while not check_format(string):
-    string = input("Введіть новий діапазон чисел min, max, quantity: ")
+    print("[]")
+    # Prompt the user to input the range and quantity of numbers for the lottery ticket
+    string = input(
+        "Введіть новий діапазон цілих чисел min (має бути більшим за 0), max (має бути меншим за 1000), quantity: "
+    )
 
 # Generate lottery numbers based on the provided range and quantity
 lottery_numbers = get_numbers_ticket(min_value, max_value, quantity)
