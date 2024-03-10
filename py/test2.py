@@ -1,12 +1,12 @@
 import random  # Import the random module to generate random numbers
 
-min_value = 1
-max_value = 49
-quantity = 6
+min_value = 0
+max_value = 0
+quantity = 0
 
 
 # Function to generate a list of unique random numbers within a given range
-def get_numbers_ticket(min, max, quantity):
+def numbers_ticket(min, max, quantity):
     numbers = []
     for i in range(quantity):
         number = random.randint(
@@ -60,7 +60,7 @@ def check_format(string):
         return False
 
     # Print the obtained data for the lottery ticket
-    print("Отримані данні для лотерейнього білету:")
+    print("Отримані данні для лотерейного білету:")
     print(f"Мінімальне число: {min_value}")
     print(f"Максимальне число: {max_value}")
     print(f"Кількість чисел: {quantity}")
@@ -68,19 +68,25 @@ def check_format(string):
     return True
 
 
-# Prompt the user to input the range and quantity of numbers for the lottery ticket
-string = input("Введіть Ваш діапазон чисел min, max, quantity: ")
+def get_numbers_ticket(min=0, max=0, quantity_value=0):
+    global min_value, max_value, quantity
+    # Set default values for the range and quantity if not provided
+    if min == 0 and max == 0 and quantity_value == 0:
+        # Prompt the user to input the range and quantity of numbers for the lottery ticket
+        string = input("Введіть Ваш діапазон чисел min, max, quantity: ")
+    else:
+        string = str(min) + "," + str(max) + "," + str(quantity_value)
 
-# Loop until the input format is correct
-while not check_format(string):
-    print("[]")
-    # Prompt the user to input the range and quantity of numbers for the lottery ticket
-    string = input(
-        "Введіть новий діапазон цілих чисел min (має бути більшим за 0), max (має бути меншим за 1000), quantity: "
-    )
+    # Loop until the input format is correct
+    if not check_format(string):
+        lottery_numbers = []
+        return lottery_numbers
+    else:
+        # Generate lottery numbers based on the provided range and quantity
+        lottery_numbers = numbers_ticket(min_value, max_value, quantity)
+        # Print the generated lottery numbers
+        return lottery_numbers
 
-# Generate lottery numbers based on the provided range and quantity
-lottery_numbers = get_numbers_ticket(min_value, max_value, quantity)
 
-# Print the generated lottery numbers
-print("Ваші лотерейні числа:", lottery_numbers)
+win_numbers = get_numbers_ticket(1, 46, 6)
+print("Ваші лотерейні числа:", win_numbers)
