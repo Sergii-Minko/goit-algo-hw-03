@@ -88,5 +88,5 @@ def get_numbers_ticket(min=0, max=0, quantity_value=0):
         return lottery_numbers
 
 
-win_numbers = get_numbers_ticket(1, 46, 6)
+win_numbers = get_numbers_ticket(1, 49, 6)
 print("Ваші лотерейні числа:", win_numbers)
